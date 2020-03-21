@@ -15,18 +15,32 @@ public class Likefull {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(mappedBy = "likefull")
+    @Column(nullable = false)
+    private Long userId;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "feed_id")
     private Feed feed;
 
     @Enumerated(EnumType.STRING)
     private LikeType likeType;
 
     @Builder
-    public Likefull(LikeType likeType) {
+    public Likefull(LikeType likeType, Long userId) {
         this.likeType = likeType;
+        this.userId = userId;
     }
 
     public void setFeed(Feed feed) {
+        if (this.feed != null) {
+            this.feed.getLikefulls().remove(this);
+        }
         this.feed = feed;
+        feed.getLikefulls().add(this);
     }
+
+    public void changeLikeType(LikeType likeType) {
+        this.likeType = likeType;
+    }
+
 }
