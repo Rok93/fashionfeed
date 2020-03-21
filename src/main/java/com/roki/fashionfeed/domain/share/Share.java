@@ -1,6 +1,7 @@
 package com.roki.fashionfeed.domain.share;
 
 import com.roki.fashionfeed.domain.feed.Feed;
+import com.roki.fashionfeed.domain.likefull.LikeType;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,18 +16,31 @@ public class Share {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(mappedBy = "share", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @Column(nullable = false)
+    private Long userId;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "feed_id")
     private Feed feed;
 
     @Enumerated(EnumType.STRING)
     private ShareStatus shareStatus;
 
     @Builder
-    public Share(ShareStatus shareStatus) {
+    public Share(Long userId, ShareStatus shareStatus) {
+        this.userId = userId;
         this.shareStatus = shareStatus;
     }
 
     public void setFeed(Feed feed) {
+        if (this.feed != null) {
+            this.feed.getShares().remove(this);
+        }
         this.feed = feed;
+        feed.getShares().add(this);
+    }
+
+    public void changeShareStatus(ShareStatus shareStatus) {
+        this.shareStatus = shareStatus;
     }
 }
