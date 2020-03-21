@@ -14,10 +14,13 @@ import javax.persistence.*;
 public class Chat extends BaseTimeEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @Column(nullable = false)
+    private Long userId;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "feed_id")
     private Feed feed;
 
@@ -25,8 +28,9 @@ public class Chat extends BaseTimeEntity {
     private String content;
 
     @Builder
-    public Chat(String content) {
+    public Chat(String content, Long userId) {
         this.content = content;
+        this.userId = userId;
     }
 
     public void setFeed(Feed feed) {
@@ -35,5 +39,9 @@ public class Chat extends BaseTimeEntity {
         }
         this.feed = feed;
         feed.getChats().add(this);
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }
