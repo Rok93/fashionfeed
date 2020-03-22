@@ -9,3 +9,5 @@ spring:
         dialect: org.hibernate.dialect.H2Dialect
 #  session:
 #    store-type: jdbc
+  mustache:
+    expose-session-attributes: true
