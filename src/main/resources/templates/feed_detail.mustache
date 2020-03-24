@@ -1,0 +1,114 @@
+{{>layout/header}}
+<!-- Page Content -->
+<div class="container" style="padding-top: 6%">
+
+    <div class="row feed_detail">
+        {{#feed}}
+            <div class="col-md-5">
+                <img class="feed_img" src="/{{feedImage}}" alt="패션피드1">
+            </div>
+
+        <div class="col-md-7 feed_container">
+            <h4 class="feed_detail logo_text">D.FASHION </h4>
+            <span id="icon_button" class="feed_detail like_icon">
+                    {{#isLikeByUser}}
+                        <img id="like-cancel" class="feed_detail like_icon"
+                             src="/images/feed_detail_like_icon_active.png"/>
+                    {{/isLikeByUser}}
+                {{^isLikeByUser}}
+                    <img id="like-execution" class="feed_detail like_icon" src="/images/feed_detail_like_icon.png"/>
+                {{/isLikeByUser}}
+                </span>
+            <h4 class="feed_detail create_date">{{createdDate}}</h4>
+            <h2 class="feed_detail feed_title">{{feedTitle}}
+            </h2>
+            <p class="feed_detail feed_content" style="white-space: pre-line">
+                {{feedContent}}
+            </p>
+            <ul class="feed_detail feed_hashtag">
+                <li>#FW20</li>
+                <li>#MENSWEAR</li>
+                <li>#STYLING</li>
+            </ul>
+            <div class="share_button">
+                {{#isShareByUser}}
+                    <button type="button" id="share-cancel" class="btn btn-default">
+                    <span class="glyphicon glyphicon-share share-cancle-button"
+                          aria-hidden="true"></span> 공유 취소
+                    </button>
+                {{/isShareByUser}}
+                {{^isShareByUser}}
+                    <button type="button" id="share-active" class="btn btn-default">
+                    <span class="glyphicon glyphicon-share share-active-button"
+                          aria-hidden="true"></span> 공유하기
+                    </button>
+                {{/isShareByUser}}
+            </div>
+            <hr>
+            <div class="row comments_wrap">
+                <div class="col-md-7">
+                    <h4 class="feed_detail comment_title">COMMENTS</h4>
+                </div>
+                <div class="row">
+            <span class="col-md-10">
+            <textarea id="chat_content" class="form-control feed_comment_form" rows="3"></textarea>
+            </span>
+                    <span class="col-md-2 feed_detail feed_conmment_registor">
+                   <input id="chat-save" class="btn btn-gray-dark feed_comment_button" type="button" value="댓글 등록">
+            </span>
+                </div>
+            </div>
+            <hr>
+
+        <div class="row">
+            <!-- 댓글 템플릿_START-->
+            {{#chats}}
+                <div id="{{id}}" class="row feed_commnet">
+                    <div class="row feed_comment_username">
+                        <!--마찬가지로 현재 userId랑 등록한 id랑 일치해야한다! js에서 session을 어찌 받아와야하는지 고민이다...-->
+                        <button type="button" class="close" aria-label="Close">
+                            <span class="glyphicon glyphicon-remove chat-delete" aria-hidden="true"></span>
+                        </button>
+                        <span class="chat_userid">ID: {{userId}}</span>
+                        <span class="chat_created_date">등록일: {{createdDate}}</span>
+                    </div>
+                    <div class="row feed_comment_content">
+                        {{content}}
+                    </div>
+                    <!--현재 userId랑 일치여부 파악해서 나오게해야한다 ㅠㅠ..-->
+                    <button type="button" class="close" aria-label="Close">
+                        <span class="glyphicon glyphicon-pencil chat-update" aria-hidden="true"></span>
+                    </button>
+                </div>
+            {{/chats}}
+        {{/feed}}
+        <!-- 댓글 템플릿_END -->
+
+    </div>
+    </div>
+    </div>
+</div>
+<!-- /.row -->
+
+
+<!-- 댓글도 템플릿 처리를 할까? -->
+<!--<script type="text/x-handlebars-template" id="" >-->
+<!--    <div class="row feed_commnet" id="{}">-->
+<!--        <div class="row feed_comment_username">-->
+
+<!--            <button type="button" class="close" aria-label="Close">-->
+<!--                <span class="glyphicon glyphicon-remove chat-delete" aria-hidden="true"></span>-->
+<!--            </button>-->
+
+<!--            <span class="chat_userid">ID: 2</span> <span class="chat_created_date">등록일: 2020.03.22</span>-->
+<!--        </div>-->
+<!--        <div class="row feed_comment_content">-->
+<!--            언제쯤 나오나요? 언제쯤 나오나요? 언제쯤 나오나요? 언제쯤 나오나요? 언제쯤 나오나요? 언제쯤 나오나요?-->
+<!--        </div>-->
+<!--        <button type="button" class="close" aria-label="Close">-->
+<!--            <span class="glyphicon glyphicon-pencil chat-update" aria-hidden="true"></span>-->
+<!--        </button>-->
+<!--    </div>-->
+<!--</script>-->
+
+{{>layout/footer}}
