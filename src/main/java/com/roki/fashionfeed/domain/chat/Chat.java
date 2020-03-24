@@ -20,7 +20,7 @@ public class Chat extends BaseTimeEntity {
     @Column(nullable = false)
     private Long userId;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "feed_id")
     private Feed feed;
 
