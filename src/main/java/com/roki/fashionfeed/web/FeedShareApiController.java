@@ -1,7 +1,6 @@
 package com.roki.fashionfeed.web;
 
 import com.roki.fashionfeed.service.ShareService;
-import com.roki.fashionfeed.web.dto.LikefullSaveRequestDto;
 import com.roki.fashionfeed.web.dto.ShareSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;

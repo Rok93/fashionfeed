@@ -24,7 +24,7 @@ public class FeedLikefullApiController {
             Long userId = (long) (int) objUserId;
             return likefullService.save(feedId, new LikefullSaveRequestDto(userId));
         }
-        // 유저 아이디가 없는 경우 발생
+        // 유저 아이디가 없는 경우 예외처리 
         return 0L;
     }
 
