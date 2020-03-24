@@ -2,6 +2,7 @@ package com.roki.fashionfeed.web;
 
 import com.roki.fashionfeed.service.ChatService;
 import com.roki.fashionfeed.web.dto.ChatSaveRequestDto;
+import com.roki.fashionfeed.web.dto.ChatUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,8 +24,9 @@ public class FeedChatApiController {
     }
 
     @PutMapping("/api/{feedId}/chat/{chatId}")
-    public Long update(@PathVariable Long feedId, @PathVariable Long chatId, @RequestBody String content) {
-        return chatService.update(chatId, feedId, content);
+    public Long update(@PathVariable Long feedId, @PathVariable Long chatId,
+                       @RequestBody ChatUpdateRequestDto requestDto) {
+        return chatService.update(chatId, feedId, requestDto);
     }
 
     @DeleteMapping("/api/chat/{chatId}")

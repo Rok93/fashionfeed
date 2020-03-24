@@ -8,13 +8,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ChatUpdateDto {
+public class ChatUpdateRequestDto {
     private Long id;
     private Long userId;
     private String content;
 
     @Builder
-    public ChatUpdateDto(String content) {
+    public ChatUpdateRequestDto(String content) {
         this.content = content;
     }
 

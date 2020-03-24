@@ -5,6 +5,7 @@ import com.roki.fashionfeed.domain.chat.ChatRepository;
 import com.roki.fashionfeed.domain.feed.Feed;
 import com.roki.fashionfeed.domain.feed.FeedRepository;
 import com.roki.fashionfeed.web.dto.ChatSaveRequestDto;
+import com.roki.fashionfeed.web.dto.ChatUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,13 +28,13 @@ public class ChatService {
     }
 
     @Transactional
-    public Long update(Long chatId, Long feedId, String content) {
+    public Long update(Long chatId, Long feedId, ChatUpdateRequestDto requestDto) {
         Feed feed = feedRepository.findById(feedId)
                 .orElseThrow(() -> new IllegalArgumentException("해당하는 피드가 없습니다. id=" + feedId));
         Chat chat = chatRepository.findById(chatId)
                 .orElseThrow(() -> new IllegalArgumentException("해당하는 댓글이 없습니다. id=" + chatId));
 
-        chat.setContent(content);
+        chat.setContent(requestDto.getContent());
         chat.setFeed(feed);
         chatRepository.save(chat);
 
