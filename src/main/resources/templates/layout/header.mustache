@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="Subject" content="패션피드"/>
+    <title>Welcome Fashion Trand Page!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/common.css">
+</head>
+<body>
+<header class="navbar">
+    <div class="head-innser">
+        <ul class="top-menu">
+            {{#sessionUser }}
+                <li><a href="/" class="welcome_comment">{{sessionUser}}님 환영합니다</a></li>
+                <li><a id="logout-btn" href="/logout" class="login_button">로그아웃</a></li>   <!--로그아웃을 하는 경우는 이번 프로젝트에서는 제외한다-->
+            {{/sessionUser }}
+            {{^sessionUser }}
+                <li><a id="login-btn" href="/login" class="login_button">로그인</a></li>
+            {{/sessionUser }}
+            <li><a href="/">마이페이지</a></li>
+            <li><a href="/">고객센터</a></li>
+        </ul>
+    </div>
+    <div style="padding-top: 0px;">
+        <div class="head-wrap">
+            <div class="area_logo">
+                <a href="/">
+                    <span class="dcode_logo">d.code</span>
+                </a>
+            </div>
+            <div class="area_gnb">
+                <ul>
+                    <li><a href="https://www.itsdcode.com/dscover?coverType=d-rection">PRE-ORDER </a></li>
+                    <li><a href="https://www.itsdcode.com/dscover?coverType=d-promo">PROMOTION</a></li>
+                    <li><a href="https://www.itsdcode.com/products/brands">BRAND</a></li>
+                    <li><a href="https://www.itsdcode.com/product/list/2">MEN</a></li>
+                    <li><a href="https://www.itsdcode.com/product/list/1">WOMEN</a></li>
+                    <li><a href="/">FEED</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
