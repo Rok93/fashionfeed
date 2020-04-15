@@ -10,6 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
@@ -19,50 +21,28 @@ class LikefullRepositoryTest {
     @Autowired
     LikefullRepository likefullRepository;
 
-    @Autowired
-    FeedRepository feedRepository;
-
     @AfterEach
     void tearDown() {
         likefullRepository.deleteAll();
-        feedRepository.deleteAll();
     }
 
     @Test
     @Transactional
-    public void likefull을_조회한다() {
+    public void 좋아요를_저장_조회한다() {
+        //given
         LikeType likeType = LikeType.UNLIKE;
         Long userId = 1L;
-        Likefull likefull = Likefull.builder()
+        likefullRepository.save(Likefull.builder()
                 .userId(userId)
                 .likeType(likeType)
-                .build();
+                .build());
 
-        String feedTitle = "feedTitle";
-        String feedImage = "feedImage";
-        String feedContent = "content";
-        Feed feed = Feed.builder()
-                .feedTitle(feedTitle)
-                .feedImage(feedImage)
-                .feedContent(feedContent)
-                .build();
+        //when
+        List<Likefull> likefulls = likefullRepository.findAll();
 
-        likefull.setFeed(feed);
-        feedRepository.save(feed);
-
-        Feed findFeed = feedRepository.findAll().get(0);
-        assertThat(likeType).isEqualTo(findFeed.getLikefulls().get(0).getLikeType());
-        assertThat(userId).isEqualTo(findFeed.getLikefulls().get(0).getUserId());
-        assertThat(feedTitle).isEqualTo(findFeed.getFeedTitle());
-        assertThat(feedImage).isEqualTo(findFeed.getFeedImage());
-        assertThat(feedContent).isEqualTo(findFeed.getFeedContent());
-
-        Likefull findLikefull = likefullRepository.findAll().get(0);
-        assertThat(likeType).isEqualTo(findLikefull.getLikeType());
-        assertThat(userId).isEqualTo(findLikefull.getUserId());
-        assertThat(feedTitle).isEqualTo(findLikefull.getFeed().getFeedTitle());
-        assertThat(feedImage).isEqualTo(findLikefull.getFeed().getFeedImage());
-        assertThat(feedContent).isEqualTo(findLikefull.getFeed().getFeedContent());
-
+        //then
+        Likefull likefull = likefulls.get(0);
+        assertThat(likeType).isEqualTo(likefull.getLikeType());
+        assertThat(userId).isEqualTo(likefull.getUserId());
     }
 }
