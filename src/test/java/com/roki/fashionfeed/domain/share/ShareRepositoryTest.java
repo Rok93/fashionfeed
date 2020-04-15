@@ -10,6 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
@@ -17,51 +19,31 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ShareRepositoryTest {
 
     @Autowired
-    FeedRepository feedRepository;
-
-    @Autowired
     ShareRepository shareRepository;
 
     @AfterEach
     void tearDown() {
-        feedRepository.deleteAll();
         shareRepository.deleteAll();
     }
 
     @Test
     @Transactional
     public void Share를_조회한다() {
+        //given
         Long userId = 1L;
         ShareStatus shareStatus = ShareStatus.UNSHARE;
-        Share share = Share.builder()
+
+        shareRepository.save(Share.builder()
                 .userId(userId)
                 .shareStatus(shareStatus)
-                .build();
+                .build());
 
-        String feedTitle = "feedTitle";
-        String feedImage = "feedImage";
-        String feedContent = "content";
-        Feed feed = Feed.builder()
-                .feedTitle(feedTitle)
-                .feedImage(feedImage)
-                .feedContent(feedContent)
-                .build();
+        //when
+        List<Share> shares = shareRepository.findAll();
 
-        share.setFeed(feed);
-        feedRepository.save(feed);
-
-        Feed findFeed = feedRepository.findAll().get(0);
-        assertThat(userId).isEqualTo(findFeed.getShares().get(0).getUserId());
-        assertThat(shareStatus).isEqualTo(findFeed.getShares().get(0).getShareStatus());
-        assertThat(feedTitle).isEqualTo(findFeed.getFeedTitle());
-        assertThat(feedImage).isEqualTo(findFeed.getFeedImage());
-        assertThat(feedContent).isEqualTo(findFeed.getFeedContent());
-
-        Share findShare = shareRepository.findAll().get(0);
-        assertThat(userId).isEqualTo(findShare.getUserId());
-        assertThat(shareStatus).isEqualTo(findShare.getShareStatus());
-        assertThat(feedTitle).isEqualTo(findShare.getFeed().getFeedTitle());
-        assertThat(feedImage).isEqualTo(findShare.getFeed().getFeedImage());
-        assertThat(feedContent).isEqualTo(findShare.getFeed().getFeedContent());
+        //then
+        Share share = shares.get(0);
+        assertThat(userId).isEqualTo(share.getUserId());
+        assertThat(shareStatus).isEqualTo(share.getShareStatus());
     }
 }
