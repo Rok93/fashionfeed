@@ -23,7 +23,7 @@ public class FeedApiController {
         response.sendRedirect("/");
     }
 
-    @GetMapping("/api/feed")
+    @GetMapping("/api/feeds")
     public Page<FeedResponseDto> testSave(@PageableDefault(page = 0, size = 10, sort = "id",
             direction = Sort.Direction.DESC) Pageable pageable) { //이부분 출력 테스트를 해봐야할 것같다!
         return feedService.findAll(pageable);

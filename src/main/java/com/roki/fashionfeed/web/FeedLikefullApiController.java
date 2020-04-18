@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 public class FeedLikefullApiController {
     private final LikefullService likefullService;
 
-    @PutMapping("/api/{feedId}/like")
+    @PutMapping("/api/{feedId}/likes")
     public Long save(@PathVariable Long feedId, HttpServletRequest request) {
         HttpSession session = request.getSession();
         Object objUserId = session.getAttribute("sessionUser");
@@ -28,7 +28,7 @@ public class FeedLikefullApiController {
         return 0L;
     }
 
-    @DeleteMapping("/api/{feedId}/like")
+    @DeleteMapping("/api/{feedId}/likes")
     public Long delete(@PathVariable Long feedId, HttpServletRequest request) {
         HttpSession session = request.getSession();
         Long userId = (long) (int) session.getAttribute("sessionUser");

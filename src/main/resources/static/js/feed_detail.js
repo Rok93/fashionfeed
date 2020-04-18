@@ -25,7 +25,7 @@ var chatFunction = { //todo: CRUD 모두 구현(C는 여기서 구현하지 않�
         };
         $.ajax({
             type: 'POST',
-            url: '/api/' + currentFeedId + '/chat',
+            url: '/api/' + currentFeedId + '/chats',
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
@@ -42,7 +42,7 @@ var chatFunction = { //todo: CRUD 모두 구현(C는 여기서 구현하지 않�
         };
         $.ajax({
             type: 'PUT',
-            url: '/api' + currentFeedId + '/chat/' + chatId,
+            url: '/api' + currentFeedId + '/chats/' + chatId,
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
@@ -56,7 +56,7 @@ var chatFunction = { //todo: CRUD 모두 구현(C는 여기서 구현하지 않�
     delete: function (chatId) {
         $.ajax({
             type: 'DELETE',
-            url: '/api/chat/' + chatId,
+            url: '/api/chats/' + chatId,
             dataType: 'json',
             contentType: 'application/json; charset=utf-8'
         }).done(function () {
@@ -66,7 +66,6 @@ var chatFunction = { //todo: CRUD 모두 구현(C는 여기서 구현하지 않�
             alert(JSON.stringify(error));
         });
     },
-
 };
 
 // 좋아요 기능 !!
@@ -86,7 +85,7 @@ var likeFunction = {
     put: function () {
         $.ajax({
             type: 'PUT',
-            url: '/api/' + currentFeedId + '/like',
+            url: '/api/' + currentFeedId + '/likes',
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
         }).done(function (jsonData) {
@@ -103,7 +102,7 @@ var likeFunction = {
     delete: function () {
         $.ajax({
             type: 'DELETE',
-            url: '/api/' + currentFeedId + '/like',
+            url: '/api/' + currentFeedId + '/likes',
             dataType: 'json',
             contentType: 'application/json; charset=utf-8'
         }).done(function () {
@@ -132,7 +131,7 @@ var shareFunction = {
     put: function () {
         $.ajax({
             type: 'PUT',
-            url: '/api/' + currentFeedId + '/share',
+            url: '/api/' + currentFeedId + '/shares',
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
         }).done(function (jsonData) {
@@ -148,7 +147,7 @@ var shareFunction = {
     delete: function () {
         $.ajax({
             type: 'DELETE',
-            url: '/api/' + currentFeedId + '/share',
+            url: '/api/' + currentFeedId + '/shares',
             dataType: 'json',
             contentType: 'application/json; charset=utf-8'
         }).done(function () {
@@ -165,5 +164,5 @@ likeFunction.init();
 shareFunction.init();
 
 function showPopup() {
-    window.open("/share/popup", "공유하기", "width=400, height=200, left=0, top=0");
+    window.open("/shares/popup", "공유하기", "width=400, height=200, left=0, top=0");
 }

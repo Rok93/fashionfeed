@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 public class FeedChatApiController {
     private final ChatService chatService;
 
-    @PostMapping("/api/{feedId}/chat")
+    @PostMapping("/api/{feedId}/chats")
     public Long save(@PathVariable int feedId, @RequestBody ChatSaveRequestDto requestDto, HttpServletRequest request) {
         HttpSession session = request.getSession();
         Long userId = (long) (int) session.getAttribute("sessionUser");
@@ -23,13 +23,13 @@ public class FeedChatApiController {
         return chatService.save(longFeedId, requestDto);
     }
 
-    @PutMapping("/api/{feedId}/chat/{chatId}")
+    @PutMapping("/api/{feedId}/chats/{chatId}")
     public Long update(@PathVariable Long feedId, @PathVariable Long chatId,
                        @RequestBody ChatUpdateRequestDto requestDto) {
         return chatService.update(chatId, feedId, requestDto);
     }
 
-    @DeleteMapping("/api/chat/{chatId}")
+    @DeleteMapping("/api/chats/{chatId}")
     public Long delete(@PathVariable Long chatId) {
         chatService.delete(chatId);
         return chatId;

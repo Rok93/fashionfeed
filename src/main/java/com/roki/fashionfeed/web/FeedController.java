@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 public class FeedController {
     private final FeedService feedService;
 
-    @GetMapping("/feed/{id}")
+    @GetMapping("/feeds/{id}")
     public String feedDetail(@PathVariable Long id, Model model, HttpServletRequest request) {
         FeedResponseDto findFeed = feedService.findById(id);
         model.addAttribute("feed", findFeed);

@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 public class FeedShareApiController {
     private final ShareService shareService;
 
-    @PutMapping("/api/{feedId}/share")
+    @PutMapping("/api/{feedId}/shares")
     public Long save(@PathVariable Long feedId, HttpServletRequest request) {
         HttpSession session = request.getSession();
         Object objUserId = session.getAttribute("sessionUser");
@@ -29,7 +29,7 @@ public class FeedShareApiController {
         return 0L;
     }
 
-    @DeleteMapping("/api/{feedId}/share")
+    @DeleteMapping("/api/{feedId}/shares")
     public Long delete(@PathVariable Long feedId, HttpServletRequest request) {
         HttpSession session = request.getSession();
         Long userId = (long) (int) session.getAttribute("sessionUser");

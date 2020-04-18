@@ -39,11 +39,11 @@ var index = {
             parentoffsetParent = evt.target.parentElement;
         }
 
-        window.location.href = "/feed/" + parentoffsetParent.id;
+        window.location.href = "/feeds/" + parentoffsetParent.id;
     },
     feedSearch: function (getPage, getSize) {
         $.ajax({
-            url: "/api/feed?page=" + getPage + "&size=" + getSize,
+            url: "/api/feeds?page=" + getPage + "&size=" + getSize,
             type: 'GET',
             dataType: "json",
             contentType: 'application/json; charset=utf-8',
