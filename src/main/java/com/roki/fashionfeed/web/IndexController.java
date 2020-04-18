@@ -17,7 +17,7 @@ public class IndexController {
     private final FeedService feedService;
 
     @GetMapping("/")
-    public String findFeedByPageable(@PageableDefault(page = 0, size = 10, sort = "id",
+    public String index(@PageableDefault(page = 0, size = 10, sort = "id",
             direction = Sort.Direction.DESC) Pageable pageable, Model model) {
         Page<FeedResponseDto> feedPage = feedService.findAll(pageable);
         model.addAttribute("feedPage", feedPage);
