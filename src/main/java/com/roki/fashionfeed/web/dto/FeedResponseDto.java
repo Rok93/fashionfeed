@@ -49,6 +49,13 @@ public class FeedResponseDto {
         this.modifiedDate = entity.getModifiedDate();
     }
 
+    public FeedResponseDto(Long id, String feedTitle, String feedContent, String feedImage) {
+        this.id = id;
+        this.feedTitle = feedTitle;
+        this.feedContent = feedContent;
+        this.feedImage = feedImage;
+    }
+
     public static FeedResponseDto of(Feed feed) {
         ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(feed, FeedResponseDto.class);
