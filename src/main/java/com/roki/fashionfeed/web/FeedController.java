@@ -32,7 +32,7 @@ public class FeedController {
                     .anyMatch(share -> share.getUserId().equals(userId));
             model.addAttribute("isShareByUser", isShareFeedByUser);
         }
-        return "feed_detail";
+        return "feed-detail";
     }
 
 }
