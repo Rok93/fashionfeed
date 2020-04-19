@@ -3,6 +3,7 @@ package com.roki.fashionfeed.service;
 import com.roki.fashionfeed.domain.feed.Feed;
 import com.roki.fashionfeed.domain.feed.FeedRepository;
 import com.roki.fashionfeed.web.dto.FeedResponseDto;
+import com.roki.fashionfeed.web.dto.FeedSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,6 +26,12 @@ public class FeedService {
     @Transactional(readOnly = true)
     public Page<FeedResponseDto> findAll(Pageable pageable) {
         return FeedResponseDto.of(feedRepository.findAll(pageable));
+    }
+
+    @Transactional
+    public void save(FeedSaveRequestDto requestDto) {
+        Feed feed = requestDto.toEntity();
+        feedRepository.save(feed);
     }
 
     // 실제 테스트를 위한 Feed 20개 저장(test용도)
