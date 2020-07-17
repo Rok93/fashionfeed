@@ -23,7 +23,7 @@ public class Feed extends BaseTimeEntity {
     @Column(length = 100, nullable = false)
     private String feedTitle;
 
-    @Column(length = 255, nullable = false)
+    @Column(length = 5000, nullable = false)
     private String feedContent;
 
     @Column(nullable = false)
@@ -44,6 +44,4 @@ public class Feed extends BaseTimeEntity {
         this.feedContent = feedContent;
         this.feedImage = feedImage;
     }
-
 }
-
