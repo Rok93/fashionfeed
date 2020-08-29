@@ -1,0 +1,9 @@
+{{>layout/header}}
+<form action="upload" method="post" enctype="multipart/form-data" name="form" style="width: 30%; top: 30%; position: fixed">
+    text: <input type="text" name="feedTitle"> <br>
+    feedContent: <textarea name="feedContent" id="content" cols="100" rows="10"></textarea> <br>
+    files : <input type="file" name="files"> <br>
+    <input type="submit" value="전송">
+</form>
+
+{{>layout/footer}}

@@ -2,16 +2,13 @@ package com.roki.fashionfeed.domain.feed;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 class FeedRepositoryTest {
 
@@ -32,7 +29,7 @@ class FeedRepositoryTest {
         feedRepository.save(Feed.builder()
                 .feedTitle(feedTitle)
                 .feedContent(feedContent)
-                .feedImage(feedImage)
+//                .feedImage(feedImage)
                 .build());
 
         //when
@@ -42,6 +39,6 @@ class FeedRepositoryTest {
         Feed findFeed = feeds.get(0);
         assertThat(feedTitle).isEqualTo(findFeed.getFeedTitle());
         assertThat(feedContent).isEqualTo(findFeed.getFeedContent());
-        assertThat(feedImage).isEqualTo(findFeed.getFeedImage());
+//        assertThat(feedImage).isEqualTo(findFeed.getFeedImage());
     }
 }

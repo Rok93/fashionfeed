@@ -23,11 +23,11 @@ public class Feed extends BaseTimeEntity {
     @Column(length = 100, nullable = false)
     private String feedTitle;
 
-    @Column(length = 5000, nullable = false)
+    @Column(length = 255, nullable = false)
     private String feedContent;
 
-    @Column(nullable = false)
-    private String feedImage;
+//    @Column(nullable = false)
+//    private String feedImage;
 
     @OneToMany(mappedBy = "feed", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Chat> chats = new ArrayList<>();
@@ -39,9 +39,11 @@ public class Feed extends BaseTimeEntity {
     private List<Share> shares = new ArrayList<>();
 
     @Builder
-    public Feed(String feedTitle, String feedContent, String feedImage) {
+    public Feed(String feedTitle, String feedContent) {
         this.feedTitle = feedTitle;
         this.feedContent = feedContent;
-        this.feedImage = feedImage;
+//        this.feedImage = feedImage;
     }
+
 }
+

@@ -18,7 +18,7 @@ public class Chat extends BaseTimeEntity {
     private Long id;
 
     @Column(nullable = false)
-    private Long userId;
+    private String userEmail;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "feed_id")
@@ -28,9 +28,9 @@ public class Chat extends BaseTimeEntity {
     private String content;
 
     @Builder
-    public Chat(String content, Long userId) {
+    public Chat(String content, String userEmail) {
         this.content = content;
-        this.userId = userId;
+        this.userEmail = userEmail;
     }
 
     public void setFeed(Feed feed) {
