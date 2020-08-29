@@ -1,35 +1,37 @@
 {{>layout/header}}
-<h1 class="login-form-title">Login Form</h1>
-<form action="/login" class="form-horizontal">
-    <div class="form-group">
-        <label for="inputEmail" class="col-sm-2 control-label">아이디</label>
-        <div class="col-sm-9">
-            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+<div class="login-form">
+    <h1 class="login-form-title">Login Form</h1>
+    <form action="/login" class="form-horizontal">
+        <div class="form-group">
+            <label for="inputEmail" class="col-sm-2 control-label">아이디</label>
+            <div class="col-sm-9">
+                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label for="inputPassword3" class="col-sm-2 control-label">비밀번호</label>
-        <div class="col-sm-9">
-            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">비밀번호</label>
+            <div class="col-sm-9">
+                <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-offset-1 col-sm-10 login-btn-default">
-            <button type="submit" class="btn btn-danger btn-lg">로그인</button>
-            <button type="submit" class="btn btn-danger btn-lg">아이디/비밀번호 찾기</button>
+        <div class="form-group">
+            <div class="col-sm-offset-1 col-sm-10 login-btn-default">
+                <button type="submit" class="btn btn-danger btn-lg">로그인</button>
+                <button type="submit" class="btn btn-danger btn-lg">아이디/비밀번호 찾기</button>
+            </div>
         </div>
-    </div>
-</form>
+    </form>
 
-<a href="/oauth2/authorization/google" role="button"><img
-        src="/images/google_login_btn.PNG" class="login-btn"
-        alt="구글 로그인 버튼">
-</a><br>
-<a href="/oauth2/authorization/naver" role="button"><img src="/images/naver_login_btn.PNG" class="login-btn"
-                                                         alt="네이버 로그인 버튼"></a><br>
-<a href="/oauth2/authorization/kakao" role="button"><img src="/images/kakao_login_btn.PNG" class="login-btn"
-                                                         alt="카카오 로그인 버튼 "></a><br>
-<a href="/oauth2/authorization/facebook" role="button"><img src="/images/facebook_login_btn.PNG"
-                                                            class="login-btn"
-                                                            alt="페이스북 로그인 버튼 "></a>
+    <a href="/oauth2/authorization/google" role="button"><img
+            src="/images/google_login_btn.PNG" class="login-btn"
+            alt="구글 로그인 버튼">
+    </a><br>
+    <a href="/oauth2/authorization/naver" role="button"><img src="/images/naver_login_btn.PNG" class="login-btn"
+                                                             alt="네이버 로그인 버튼"></a><br>
+    <a href="/oauth2/authorization/kakao" role="button"><img src="/images/kakao_login_btn.PNG" class="login-btn"
+                                                             alt="카카오 로그인 버튼 "></a><br>
+    <a href="/oauth2/authorization/facebook" role="button"><img src="/images/facebook_login_btn.PNG"
+                                                                class="login-btn"
+                                                                alt="페이스북 로그인 버튼 "></a>
+</div>
 {{>layout/footer}}
