@@ -22,7 +22,7 @@ let index = {
         $(".page-item").on("click", function (evt) {
             $(".page-item.active").removeClass("active");
             $(this).addClass("active");
-            let getPage = $(".page-item.active").filter(":first").text();  //todo: 이걸... 어떻게 jQuery로 바꾸지?
+            let getPage = $(".page-item.active").filter(":first").text();
             let getSize = $("#size_selector").val();
             _this.feedSearch(getPage - 1, getSize);
         });
