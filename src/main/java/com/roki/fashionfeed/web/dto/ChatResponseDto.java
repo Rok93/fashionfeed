@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter;
 @NoArgsConstructor
 public class ChatResponseDto {
     private Long id;
-    private Long userId;
+    private String userEmail;
     private Long feedId;
     private String content;
     private String createdDate;
@@ -21,7 +21,7 @@ public class ChatResponseDto {
 
     public ChatResponseDto(Chat entity) {
         this.id = entity.getId();
-        this.userId = entity.getUserId();
+        this.userEmail = entity.getUserEmail();
         this.feedId = entity.getFeed().getId();
         this.content = entity.getContent();
         this.createdDate = entity.getCreatedDate().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));

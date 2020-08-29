@@ -1,26 +1,24 @@
 package com.roki.fashionfeed.web;
 
+import com.roki.fashionfeed.config.auth.LoginUser;
+import com.roki.fashionfeed.config.auth.dto.SessionUser;
 import com.roki.fashionfeed.service.ChatService;
+import com.roki.fashionfeed.service.UserService;
 import com.roki.fashionfeed.web.dto.ChatSaveRequestDto;
 import com.roki.fashionfeed.web.dto.ChatUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 @RequiredArgsConstructor
 @RestController
 public class FeedChatApiController {
     private final ChatService chatService;
+    private final UserService userService;
 
     @PostMapping("/api/{feedId}/chats")
-    public Long save(@PathVariable int feedId, @RequestBody ChatSaveRequestDto requestDto, HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        Long userId = (long) (int) session.getAttribute("sessionUser");
-        Long longFeedId = (long) feedId;
-        requestDto.setUserId(userId);
-        return chatService.save(longFeedId, requestDto);
+    public Long save(@PathVariable Long feedId, @RequestBody ChatSaveRequestDto requestDto, @LoginUser SessionUser user) { //todo: @LoginUser 넣기
+        requestDto.setUserEmail(user.getEmail());
+        return chatService.save(feedId, requestDto);
     }
 
     @PutMapping("/api/{feedId}/chats/{chatId}")

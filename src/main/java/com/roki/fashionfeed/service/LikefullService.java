@@ -21,8 +21,8 @@ public class LikefullService { //todo: share랑 like 똑같은 방식으로 생�
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시물이 없습니다. id=" + feedId));
         Likefull likefullToFeed = requestDto.toEntity();
         likefullToFeed.setFeed(feed);
-
         likefullRepository.save(likefullToFeed);
+
         return likefullToFeed.getId();
     }
 

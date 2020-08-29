@@ -5,7 +5,7 @@
     <div class="row feed_detail">
         {{#feed}}
             <div class="col-md-5">
-                <img class="feed_img" src="/{{feedImage}}" alt="패션피드1">
+                <!--                <img class="feed_img" src="/" alt="패션피드1"> todo: 이미지 들어갈 위치!-->
             </div>
 
         <div class="col-md-7 feed_container">
@@ -69,7 +69,7 @@
                         <button type="button" class="close" aria-label="Close">
                             <span class="glyphicon glyphicon-remove chat-delete" aria-hidden="true"></span>
                         </button>
-                        <span class="chat_userid">ID: {{userId}}</span>
+                        <span class="chat_userid">ID: {{userEmail}}</span>
                         <span class="chat_created_date">등록일: {{createdDate}}</span>
                     </div>
                     <div class="row feed_comment_content">
@@ -88,10 +88,9 @@
     </div>
     </div>
 </div>
+
 <!-- /.row -->
-
-
-<!-- 댓글도 템플릿 처리를 할까? -->
+<!-- 댓글도 템플릿 처리를 할까?-->
 <!--<script type="text/x-handlebars-template" id="" >-->
 <!--    <div class="row feed_commnet" id="{}">-->
 <!--        <div class="row feed_comment_username">-->

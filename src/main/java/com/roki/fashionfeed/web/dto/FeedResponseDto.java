@@ -31,7 +31,7 @@ public class FeedResponseDto {
         this.id = entity.getId();
         this.feedTitle = entity.getFeedTitle();
         this.feedContent = entity.getFeedContent();
-        this.feedImage = entity.getFeedImage();
+//        this.feedImage = entity.getFeedImage();
 
         this.chats = entity.getChats().stream()
                 .map(ChatResponseDto::new)
@@ -44,7 +44,7 @@ public class FeedResponseDto {
         this.shares = entity.getShares().stream()
                 .map(ShareResponseDto::new)
                 .collect(Collectors.toList());
-        
+
         this.createdDate = entity.getCreatedDate().format(DateTimeFormatter.ofPattern("yyyy.MM.dd"));
         this.modifiedDate = entity.getModifiedDate();
     }

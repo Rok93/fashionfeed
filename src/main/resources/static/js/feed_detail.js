@@ -37,7 +37,7 @@ var chatFunction = { //todo: CRUD 모두 구현(C는 여기서 구현하지 않�
         });
     },
     update: function (chatId) {
-        var data = {
+        let data = {
             content: $('#chat_content').val(),
         };
         $.ajax({
@@ -69,7 +69,7 @@ var chatFunction = { //todo: CRUD 모두 구현(C는 여기서 구현하지 않�
 };
 
 // 좋아요 기능 !!
-var likeFunction = {
+let likeFunction = {
     init: function () {
         var _this = this;
         //공유하기 버튼 클릭!
@@ -103,8 +103,6 @@ var likeFunction = {
         $.ajax({
             type: 'DELETE',
             url: '/api/' + currentFeedId + '/likes',
-            dataType: 'json',
-            contentType: 'application/json; charset=utf-8'
         }).done(function () {
             alert('이 피드를 좋아하지 않습니다.');
             window.location.href = window.location.pathname;
@@ -115,12 +113,12 @@ var likeFunction = {
 };
 
 // 공유 기능
-var shareFunction = {
+let shareFunction = {
     init: function () {
         var _this = this;
         //공유하기 버튼 클릭!
         $("#share-active").on("click", function () {
-            showPopup();
+            window.open("/shares/popup", "공유하기", "width=400, height=200, left=0, top=0");
             _this.put();
         });
         //공유 취소 버튼 클릭!
@@ -136,6 +134,7 @@ var shareFunction = {
             contentType: 'application/json; charset=utf-8',
         }).done(function (jsonData) {
             if (jsonData === 0) {
+                alert(jsonData);
                 alert('로그인을 해주세요!');
                 return;
             }
@@ -162,7 +161,3 @@ var shareFunction = {
 chatFunction.init();
 likeFunction.init();
 shareFunction.init();
-
-function showPopup() {
-    window.open("/shares/popup", "공유하기", "width=400, height=200, left=0, top=0");
-}

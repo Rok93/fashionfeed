@@ -4,16 +4,14 @@ import com.roki.fashionfeed.domain.feed.FeedRepository;
 import com.roki.fashionfeed.service.FeedService;
 import com.roki.fashionfeed.web.dto.FeedResponseDto;
 import com.roki.fashionfeed.web.dto.FeedSaveRequestDto;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
@@ -25,7 +23,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 public class IndexControllerTest {
@@ -39,19 +36,19 @@ public class IndexControllerTest {
     @Autowired
     private FeedRepository feedRepository;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         //given
         IntStream.rangeClosed(1, 5)
                 .forEach(n -> feedService.save(FeedSaveRequestDto.builder()
                         .feedTitle("title" + n)
                         .feedContent("content" + n)
-                        .feedImage("image" + n)
+//                        .feedImage("image" + n)
                         .build())
                 );
     }
 
-    @After
+    @AfterEach
     public void tearDown() throws Exception {
         feedRepository.deleteAll();
     }
@@ -78,6 +75,5 @@ public class IndexControllerTest {
         assertThat(feedPage.getTotalElements()).isEqualTo(5);
         assertThat(feedPage.getTotalPages()).isEqualTo(1);
         assertThat(feedPage.getContent().size()).isEqualTo(5);
-
     }
 }

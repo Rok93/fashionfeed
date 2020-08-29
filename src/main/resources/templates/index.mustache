@@ -1,5 +1,4 @@
 {{>layout/header}}
-
 <div style="padding-top: 3%">
     <div class="content-wrap center">
         <div class="page-content">
@@ -18,28 +17,28 @@
 
                 <!-- 아이템 단위 -->
                 <div id="feed" class="item-wrap">
-                        {{#feedPage}}
-                            <div class="item" id="{{id}}">
-                                <figure><img src="{{feedImage}}" alt="{{feedTitle}}" class="feedMediaItem w-100">
-                                </figure>
-                                <article class="feedTags">
-                                    <p class="feedText" style="white-space: pre-line">
-                                        {{feedContent}}
-                                    </p>
-                                </article>
-                                <div class="item-ft">
-                                    <em class="feedDate">{{createdDate}}</em>
-                                    <ul class="main_page feed_icon_wrap">
-                                        <li><img src="images/like_icon.png" class="icon-btn_likefull"></img>
-                                            <span>{{likefulls.size}}</span></li>
-                                        <li><img src="images/comment_icon.png" class="icon-ico_chat"></i>
-                                            <span>{{chats.size}}</span></li>
-                                        <li><img src="images/share_icon.png" class="icon-ico_share"></i>
-                                            <span>{{shares.size}}</span></li>
-                                    </ul>
-                                </div>
+                    {{#feedPage}}
+                        <div class="item" id="{{id}}">
+<!--                            <figure><img src=" " alt=" " class="feedMediaItem w-100"> todo: feedImage 들어갈 곳!-->
+                            </figure>
+                            <article class="feedTags">
+                                <p class="feedText" style="white-space: pre-line">
+                                    {{feedContent}}
+                                </p>
+                            </article>
+                            <div class="item-ft">
+                                <em class="feedDate">{{createdDate}}</em>
+                                <ul class="main_page feed_icon_wrap">
+                                    <li><img src="images/like_icon.png" class="icon-btn_likefull"></img>
+                                        <span>{{likefulls.size}}</span></li>
+                                    <li><img src="images/comment_icon.png" class="icon-ico_chat"></i>
+                                        <span>{{chats.size}}</span></li>
+                                    <li><img src="images/share_icon.png" class="icon-ico_share"></i>
+                                        <span>{{shares.size}}</span></li>
+                                </ul>
                             </div>
-                        {{/feedPage}}
+                        </div>
+                    {{/feedPage}}
                 </div>
 
             </div>
@@ -57,29 +56,5 @@
         <li class="page-item"><a class="page-link" href="#">다음 ></a></li>
     </ul>
 </nav>
-
-<!--item Templete -->
-<script id="item-template" type="text/template">
-    <div class="item" id="{id}">
-        <figure><img src="{feedImage}" alt="{feedTitle}" class="feedMediaItem w-100">
-        </figure>
-        <article class="feedTags">
-            <p class="feedText" style="white-space: pre-line">
-                {feedContent}
-            </p>
-        </article>
-        <div class="item-ft">
-            <em class="feedDate">{createdDate}</em>
-            <ul class="main_page feed_icon_wrap">
-                <li><img src="images/like_icon.png" class="icon-btn_likefull">
-                    <span>{totalLikefullNumber}</span></li>
-                <li><img src="images/comment_icon.png" class="icon-ico_chat"></i>
-                    <span>{totalChatNumber}</span></li>
-                <li><img src="images/share_icon.png" class="icon-ico_share"></i>
-                    <span>{totalShareNumber}</span></li>
-            </ul>
-        </div>
-    </div>
-</script>
 
 {{>layout/footer}}

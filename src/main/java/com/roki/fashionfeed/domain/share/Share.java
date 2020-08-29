@@ -1,7 +1,6 @@
 package com.roki.fashionfeed.domain.share;
 
 import com.roki.fashionfeed.domain.feed.Feed;
-import com.roki.fashionfeed.domain.likefull.LikeType;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
