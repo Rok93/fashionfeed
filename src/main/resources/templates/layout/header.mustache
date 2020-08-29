@@ -19,10 +19,9 @@
                     <a href="/" class="welcome_comment">{{name}}님 환영합니다</a>
                 </li>
                 <li><a id="logout-btn" href="/logout" class="login_button">로그아웃</a></li>
-                <!--로그아웃을 하는 경우는 이번 프로젝트에서는 제외한다-->
             {{/user }}
             {{^user }}
-                <li><a id="login-btn" href="/logins" class="login_button">로그인</a></li>
+                <li><a id="login-btn" href="/login" class="login_button">로그인</a></li>
             {{/user }}
             <li><a href="/">마이페이지</a></li>
             <li><a href="/">고객센터</a></li>
