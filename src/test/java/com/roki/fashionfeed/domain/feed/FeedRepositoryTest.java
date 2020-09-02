@@ -29,7 +29,7 @@ class FeedRepositoryTest {
         feedRepository.save(Feed.builder()
                 .feedTitle(feedTitle)
                 .feedContent(feedContent)
-//                .feedImage(feedImage)
+                .feedImage(feedImage)
                 .build());
 
         //when

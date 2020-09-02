@@ -43,7 +43,7 @@ public class IndexControllerTest {
                 .forEach(n -> feedService.save(FeedSaveRequestDto.builder()
                         .feedTitle("title" + n)
                         .feedContent("content" + n)
-//                        .feedImage("image" + n)
+                        .feedImage("image" + n)
                         .build())
                 );
     }

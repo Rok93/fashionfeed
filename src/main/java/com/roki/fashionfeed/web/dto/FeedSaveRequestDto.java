@@ -19,17 +19,20 @@ import java.io.Serializable;
 public class FeedSaveRequestDto implements Serializable {
     private String feedTitle;
     private String feedContent;
+    private String feedImage;
 
     @Builder
-    public FeedSaveRequestDto(String feedTitle, String feedContent) {
+    public FeedSaveRequestDto(String feedTitle, String feedContent, String feedImage) {
         this.feedTitle = feedTitle;
         this.feedContent = feedContent;
+        this.feedImage = feedImage;
     }
 
     public Feed toEntity() {
         return Feed.builder()
                 .feedTitle(feedTitle)
                 .feedContent(feedContent)
+                .feedImage(feedImage)
                 .build();
     }
 }
