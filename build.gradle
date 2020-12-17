@@ -42,6 +42,8 @@ dependencies {
     compile group: 'org.modelmapper', name: 'modelmapper', version: '2.3.6'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.0'
     compile('org.springframework.session:spring-session-jdbc')
+    implementation 'io.springfox:springfox-swagger2:2.9.2'
+    implementation 'io.springfox:springfox-swagger-ui:2.9.2'
 }
 
 test {
